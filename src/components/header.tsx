@@ -1,9 +1,11 @@
 import { Button, Navbar, NavbarBrand, NavbarContent, NavbarItem } from '@nextui-org/react'
-import { Link } from '@tanstack/react-router'
+import { Link, useNavigate } from '@tanstack/react-router'
 import { ShoppingCart } from 'lucide-react'
 import { AcmeLogo } from '~/assets/Acmelogo'
 
 export default function Header() {
+  const navigate = useNavigate()
+
   return (
     <Navbar position='static'>
       <NavbarBrand>
@@ -22,7 +24,7 @@ export default function Header() {
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link className='text-foreground [&.active]:font-bold [&.active]:text-primary' to={'/'}>
+          <Link className='text-foreground [&.active]:font-bold [&.active]:text-primary' to={'/contact'}>
             Contact
           </Link>
         </NavbarItem>
@@ -37,7 +39,12 @@ export default function Header() {
           </Button>
         </NavbarItem> */}
         <NavbarItem>
-          <Button isIconOnly>
+          <Button
+            isIconOnly
+            onPress={() => {
+              navigate({ to: '/cart' })
+            }}
+          >
             <ShoppingCart />
           </Button>
         </NavbarItem>
